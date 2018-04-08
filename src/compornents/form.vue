@@ -101,8 +101,6 @@
     methods: {
       convert: function(target_id) {
         var input_file = document.getElementById(target_id);
-        // ------------------------------------------------------------
-        // 値が変化した時に実行されるイベント
 
         // ファイルが選択されたか
         if(!(input_file.value)) return;
