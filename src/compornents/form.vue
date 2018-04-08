@@ -64,7 +64,7 @@
             <label for="rec_source">ラジオ音源</label>
           </div>
           <div class="col s10">
-            <input type="file" id="rec_source" name="rec_source">
+            <input type="file" id="rec_source" name="rec_source" @change="convert('rec_source')">
           </div>
         </div>
         <div class="row upload-row">
