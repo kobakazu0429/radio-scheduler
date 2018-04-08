@@ -14,49 +14,49 @@
             <label for="rec">収録</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="rec" v-model="rec"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="rec" v-model="rec"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="edit">編集</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="edit" v-model="edit"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="edit" v-model="edit"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="censorship">検閲</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="censorship" v-model="censorship"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="censorship" v-model="censorship"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="thumbnail">サムネイル画像</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="thumbnail" v-model="thumbnail"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="thumbnail" v-model="thumbnail"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="reserve">予約投稿</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="reserve" v-model="reserve"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reserve" v-model="reserve"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="release">公開</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="release" v-model="release"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="release" v-model="release"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="comic">4コマ漫画</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="comic" v-model="comic"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="comic" v-model="comic"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
           <div class="col s2">
             <label for="tweet">ツイート</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" false-value='false' true-value='true' id="tweet" v-model="tweet"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="tweet" v-model="tweet"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
         </div>
         <div class="row upload-row">
