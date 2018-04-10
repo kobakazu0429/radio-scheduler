@@ -110,9 +110,6 @@
         release: false,
         comic: false,
         tweet: false,
-        rec_source: '',
-        thumbnail_img: '',
-        comic_img: '',
       }
     },
     methods: {
@@ -143,37 +140,43 @@
         // 読み込み成功時に実行されるイベント
         file_reader.onload = function(e){
 
-        // 出力テスト
-        console.log(file_reader.result);
-      };
+          // 出力
+          var target_id = file_reader.result;
+          // 出力テスト
+          console.log(target_id);
+        };
 
-      // ------------------------------------------------------------
-      // 読み込みを開始する（Data URI Scheme 文字列を得る）
-      file_reader.readAsDataURL(file);
+        // ------------------------------------------------------------
+        // 読み込みを開始する（Data URI Scheme 文字列を得る）
+        file_reader.readAsDataURL(file);
+      },
+      send: function() {
+        this.axios({
+          method: 'post',
+          url: 'https://script.google.com/macros/s/AKfycbzub6RPKKORwtpMpqccA7Q5mzhNQ_HnFzBjYl74pORaaM3u-39X/exec',
+          data: {
+            title        : this.title.value,
+            published_at : this.published_at.value,
+            rec          : this.rec,
+            edit         : this.edit,
+            censorship   : this.censorship,
+            thumbnail    : this.thumbnail,
+            reserve      : this.reserve,
+            release      : this.release,
+            comic        : this.comic,
+            tweet        : this.tweet,
+            rec_source   : rec_source,
+            thumbnail_img: thumbnail_img,
+            comic_img    : comic_img,
+
+          },
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          }
+        })
+      }
     },
-    send: function() {
-      this.axios({
-        method: 'post',
-        url: 'https://script.google.com/macros/s/AKfycbzub6RPKKORwtpMpqccA7Q5mzhNQ_HnFzBjYl74pORaaM3u-39X/exec',
-        data: {
-          title       : this.title.value,
-          published_at: this.published_at.value,
-          rec         : this.rec,
-          edit        : this.edit,
-          censorship  : this.censorship,
-          thumbnail   : this.thumbnail,
-          reserve     : this.reserve,
-          release     : this.release,
-          comic       : this.comic,
-          tweet       : this.tweet,
-        },
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        }
-      })
-    }
   }
-}
 </script>
 
 <style scoped>
