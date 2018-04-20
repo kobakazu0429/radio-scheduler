@@ -59,7 +59,7 @@
             <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="tweet" v-model="tweet"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
         </div>
-        <div class="row upload-row">
+<!--         <div class="row upload-row">
           <div class="col s2">
             <label for="rec_source">ラジオ音源</label>
           </div>
@@ -82,12 +82,12 @@
           <div class="col s10">
             <input type="file" id="comic_img" @change="convert('comic_img')">
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="modal-footer">
         <div class="row">
           <div class="col s12">
-            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" @click=send()>追加する</button>
+            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" @click="send">追加する</button>
             <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat">キャンセル</button>
           </div>
         </div>
@@ -97,6 +97,9 @@
 </template>
 
 <script>
+  // var rec_source = '';
+  // var thumbnail_img = '';
+  // var comic_img = '';
   module.exports = {
     data: function() {
       return {
@@ -113,50 +116,62 @@
       }
     },
     methods: {
-      convert: function(target_id) {
-        var input_file = document.getElementById(target_id);
+      // convert: function(target_id) {
+      //   var input_file = document.getElementById(target_id);
 
-        // ファイルが選択されたか
-        if(!(input_file.value)) return;
+      //   // ファイルが選択されたか
+      //   if(!(input_file.value)) return;
 
-        // FileReader クラスに対応しているか
-        if(!(window.FileReader)) return;
+      //   // FileReader クラスに対応しているか
+      //   if(!(window.FileReader)) return;
 
-        // ------------------------------------------------------------
-        // File オブジェクトを取得（HTML5 世代）
-        // ファイルリストを取得
-        var file_list = input_file.files;
-        if(!file_list) return;
+      //   // ------------------------------------------------------------
+      //   // File オブジェクトを取得（HTML5 世代）
+      //   // ファイルリストを取得
+      //   var file_list = input_file.files;
+      //   if(!file_list) return;
 
-        // 0 番目の File オブジェクトを取得
-        var file = file_list[0];
-        if(!file) return;
+      //   // 0 番目の File オブジェクトを取得
+      //   var file = file_list[0];
+      //   if(!file) return;
 
-        // ------------------------------------------------------------
-        // FileReader オブジェクトを生成
-        var file_reader = new FileReader();
+      //   // ------------------------------------------------------------
+      //   // FileReader オブジェクトを生成
+      //   var file_reader = new FileReader();
 
-        // ------------------------------------------------------------
-        // 読み込み成功時に実行されるイベント
-        file_reader.onload = function(e){
+      //   // ------------------------------------------------------------
+      //   // 読み込み成功時に実行されるイベント
+      //   file_reader.onload = function(e){
 
-          // 出力
-          var target_id = file_reader.result;
-          // 出力テスト
-          console.log(target_id);
-        };
+      //     // 出力
+      //     // var target_id = file_reader.result;
+      //     switch(target_id) {
+      //       case 'rec_source':
+      //         rec_source = file_reader.result;
+      //         break;
+      //       case 'thumbnail_img':
+      //         thumbnail_img = file_reader.result;
+      //         break;
+      //       case 'comic_img':
+      //         comic_img = file_reader.result;
+      //         break;
+      //     }
 
-        // ------------------------------------------------------------
-        // 読み込みを開始する（Data URI Scheme 文字列を得る）
-        file_reader.readAsDataURL(file);
-      },
+      //     // 出力テスト
+      //     console.log(target_id);
+      //   };
+
+      //   // ------------------------------------------------------------
+      //   // 読み込みを開始する（Data URI Scheme 文字列を得る）
+      //   file_reader.readAsDataURL(file);
+      // },
       send: function() {
         this.axios({
           method: 'post',
           url: 'https://script.google.com/macros/s/AKfycbzub6RPKKORwtpMpqccA7Q5mzhNQ_HnFzBjYl74pORaaM3u-39X/exec',
           data: {
-            title        : this.title.value,
-            published_at : this.published_at.value,
+            title        : this.title,
+            published_at : this.published_at,
             rec          : this.rec,
             edit         : this.edit,
             censorship   : this.censorship,
@@ -165,10 +180,9 @@
             release      : this.release,
             comic        : this.comic,
             tweet        : this.tweet,
-            rec_source   : rec_source,
-            thumbnail_img: thumbnail_img,
-            comic_img    : comic_img,
-
+            // rec_source   : rec_source,
+            // thumbnail_img: thumbnail_img,
+            // comic_img    : comic_img,
           },
           headers: {
             'Content-Type': 'text/plain;charset=utf-8',
