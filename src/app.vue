@@ -4,6 +4,7 @@
     <div class="container">
       <top-buttons></top-buttons>
       <modal-form></modal-form>
+      <delete-confirm></delete-confirm>
       <div class="row">
         <tasks
         v-for="json in axiosJsons"

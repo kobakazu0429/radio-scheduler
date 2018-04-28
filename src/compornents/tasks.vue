@@ -19,7 +19,7 @@
       </div>
       <div class="card-action center">
         <a class="waves-effect waves-light btn-small icon" :href="'http://www.kure-rad.io/app/radios/' + id" target="_brank"><i class="material-icons">open_in_new</i></a>
-        <button class="waves-effect waves-light btn-small icon edit"><i class="material-icons">edit</i></button>
+        <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#modal2"><i class="material-icons">edit</i></button>
         <button class="waves-effect waves-light btn-small icon delete"><i class="material-icons">delete</i></button>
         <!-- <button class="waves-effect waves-light btn-small"><i class="material-icons left">open_in_new</i>確認</button>
         <button class="waves-effect waves-light btn-small edit"><i class="material-icons left">edit</i>編集</button>

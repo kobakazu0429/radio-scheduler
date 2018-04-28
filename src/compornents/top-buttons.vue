@@ -6,7 +6,10 @@
           <i class="material-icons left">add</i>
           新規追加
         </button>
-        <button class="waves-effect waves-light btn"><i class="material-icons left">add</i>button</button>
+        <button class="waves-effect waves-light btn modal-trigger add" href="#modal2">
+          <i class="material-icons left">delete</i>
+          削除
+        </button>
         <button class="waves-effect waves-light btn"><i class="material-icons left">add</i>button</button>
       </div>
     </div>
