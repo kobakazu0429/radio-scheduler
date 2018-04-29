@@ -1,11 +1,11 @@
 <template>
   <div id="modal2" class="modal">
     <div class="modal-content">
-      <button class="waves-effect waves-light btn modal-trigger add" href="#">
+      <button class="modal-close waves-effect waves-light btn modal-trigger add">
         <i class="material-icons left">cancel</i>
         キャンセルする
       </button>
-      <button class="waves-effect waves-light btn modal-trigger add" href="#">
+      <button class="waves-effect waves-light btn add" @click="">
         <i class="material-icons left">delete</i>
         削除する
       </button>
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 </script>
 
 <style scoped>

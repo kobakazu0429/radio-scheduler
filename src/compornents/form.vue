@@ -97,8 +97,8 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col s12">
-            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" @click="send">追加する</button>
-            <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat">キャンセル</button>
+            <button type="button" class="modal-action waves-effect waves-green btn-flat" @click="send">追加する</button>
+            <button type="button" class="modal-close waves-effect waves-green btn-flat">キャンセル</button>
           </div>
         </div>
       </div>
