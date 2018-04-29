@@ -11,14 +11,18 @@
         :id = "json.id"
         :title = "json.title"
         :published_at = "json.published_at"
-        :rec = "json.rec"
-        :edit = "json.edit"
-        :censorship = "json.censorship"
-        :thumbnail = "json.thumbnail"
-        :reserve = "json.reserve"
-        :release = "json.release"
-        :comic = "json.comic"
-        :tweet = "json.tweet"
+        :recorded = "json.recorded"
+        :edited = "json.edited"
+        :reviewed = "json.reviewed"
+        :drew_thumbnail = "json.drew_thumbnail"
+        :reserved = "json.reserved"
+        :released = "json.released"
+        :drew_comic = "json.drew_comic"
+        :tweeted = "json.tweeted"
+        :folder_id = "json.folder_id"
+        :record_url = "json.record_url"
+        :thumbnail_url = "json.thumbnail_url"
+        :comic_url = "json.comic_url"
         ></tasks>
       </div>
     </div>
@@ -36,7 +40,7 @@
     methods: {
       getJson: function() {
         var that = this
-        this.axios.get('https://script.google.com/macros/s/AKfycbxCQRMhZy8hla268VQfDhE6KfbO5PNY0Mc2su_bPjA8eCG8TY0/exec')
+        this.axios.get('http://0.0.0.0:3000/api/v1/publishing_task/')
         .then(function (response) {
           that.axiosJsons = response.data
         })

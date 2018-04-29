@@ -8,22 +8,19 @@
       </div>
       <div class="card-content">
         <span class="card-title">{{ title }}</span>
-        <p>収録　　　　:　<i class="fas" :class="[rec ? 'fa-check': 'fa-times']"></i></p>
-        <p>編集　　　　:　<i class="fas" :class="[edit ? 'fa-check': 'fa-times']"></i></p>
-        <p>検閲　　　　:　<i class="fas" :class="[censorship ? 'fa-check': 'fa-times']"></i></p>
-        <p>サムネ画像　:　<i class="fas" :class="[thumbnail ? 'fa-check': 'fa-times']"></i></p>
-        <p>予約投稿　　:　<i class="fas" :class="[reserve ? 'fa-check': 'fa-times']"></i></p>
-        <p>公開　　　　:　<i class="fas" :class="[release ? 'fa-check': 'fa-times']"></i></p>
-        <p>４コマ漫画　:　<i class="fas" :class="[comic ? 'fa-check': 'fa-times']"></i></p>
-        <p>ツイート　　:　<i class="fas" :class="[tweet ? 'fa-check': 'fa-times']"></i></p>
+        <p>収録　　　　:　<i class="fas" :class="[recorded ? 'fa-check': 'fa-times']"></i></p>
+        <p>編集　　　　:　<i class="fas" :class="[edited ? 'fa-check': 'fa-times']"></i></p>
+        <p>検閲　　　　:　<i class="fas" :class="[reviewed ? 'fa-check': 'fa-times']"></i></p>
+        <p>サムネ画像　:　<i class="fas" :class="[drew_thumbnail ? 'fa-check': 'fa-times']"></i></p>
+        <p>予約投稿　　:　<i class="fas" :class="[reserved ? 'fa-check': 'fa-times']"></i></p>
+        <p>公開　　　　:　<i class="fas" :class="[released ? 'fa-check': 'fa-times']"></i></p>
+        <p>４コマ漫画　:　<i class="fas" :class="[drew_comic ? 'fa-check': 'fa-times']"></i></p>
+        <p>ツイート　　:　<i class="fas" :class="[tweeted ? 'fa-check': 'fa-times']"></i></p>
       </div>
       <div class="card-action center">
         <a class="waves-effect waves-light btn-small icon" :href="'http://www.kure-rad.io/app/radios/' + id" target="_brank"><i class="material-icons">open_in_new</i></a>
-        <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#modal2"><i class="material-icons">edit</i></button>
-        <button class="waves-effect waves-light btn-small icon delete"><i class="material-icons">delete</i></button>
-        <!-- <button class="waves-effect waves-light btn-small"><i class="material-icons left">open_in_new</i>確認</button>
-        <button class="waves-effect waves-light btn-small edit"><i class="material-icons left">edit</i>編集</button>
-        <button class="waves-effect waves-light btn-small delete"><i class="material-icons left">delete</i>削除</button> -->
+        <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#modal1"><i class="material-icons">edit</i></button>
+        <button class="waves-effect waves-light btn-small icon delete modal-trigger" href="#modal2"><i class="material-icons">delete</i></button>
       </div>
     </div>
   </div>
@@ -37,55 +34,69 @@
         default: 00,
         required: true,
       },
-      title: {
+      title:{
         type: String,
-        default: 'タイトルだよ〜',
+        default: 'タイトルだよー',
+      },
+      published_at:{
+        type: [Number, String],
+        default: 20010429,
+      },
+      recorded:{
+        type: Number,
+        default: 0,
         required: true,
       },
-      published_at: {
+      edited:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      reviewed:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      drew_thumbnail:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      reserved:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      released:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      drew_comic:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      tweeted:{
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      folder_id:{
         type: String,
-        default: '2001-04-29',
-        required: true,
+        default: 0,
       },
-      rec: {
-        type: Boolean,
-        default: false,
-        required: true,
+      record_url:{
+        type: String,
+        default: 0,
       },
-      edit: {
-        type: Boolean,
-        default: false,
-        required: true,
+      thumbnail_url:{
+        type: String,
+        default: 0,
       },
-      censorship: {
-        type: Boolean,
-        default: false,
-        required: true,
-      },
-      thumbnail: {
-        type: Boolean,
-        default: false,
-        required: true,
-      },
-      reserve: {
-        type: Boolean,
-        default: false,
-        required: true,
-      },
-      release: {
-        type: Boolean,
-        default: false,
-        required: true,
-      },
-      comic: {
-        type: Boolean,
-        default: false,
-        required: true,
-      },
-      tweet: {
-        type: Boolean,
-        default: false,
-        required: true,
+      comic_url:{
+        type: String,
+        default: 0,
       },
     }
   }
