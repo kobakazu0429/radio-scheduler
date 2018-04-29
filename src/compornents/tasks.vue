@@ -20,7 +20,8 @@
       <div class="card-action center">
         <a class="waves-effect waves-light btn-small icon" :href="'http://www.kure-rad.io/app/radios/' + id" target="_brank"><i class="material-icons">open_in_new</i></a>
         <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#modal1"><i class="material-icons">edit</i></button>
-        <button class="waves-effect waves-light btn-small icon delete modal-trigger" href="#modal2"><i class="material-icons">delete</i></button>
+        <!-- <button class="waves-effect waves-light btn-small icon delete modal-trigger" href="#modal2"><i class="material-icons">delete</i></button> -->
+        <button class="waves-effect waves-light btn-small icon delete" @click="deleteTask(title, id)"><i class="material-icons">delete</i></button>
       </div>
     </div>
   </div>
@@ -98,6 +99,19 @@
         type: String,
         default: 0,
       },
+    },
+    methods: {
+      deleteTask: function(title, id) {
+        let result = confirm('[ 第' + id + '回 ] ' + title + ' を本当に削除してもいいですか？');
+        if(result) {
+          this.axios.delete('http://0.0.0.0:3000/api/v1/publishing_task/' + id + '/')
+          .then(response => {
+            location.reload();
+          }).catch(error => {
+            console.log(error);
+          });
+        }
+      }
     }
   }
 </script>
