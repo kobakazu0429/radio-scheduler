@@ -9,54 +9,64 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s12"><label for="published_at">公開日</label><input type="date" id="published_at" v-model="published_at"></div>
+          <div class="col s12">
+            <label for="published_at">公開日</label><input type="date" id="published_at" v-model="published_at">
+          </div>
+
           <div class="col s2">
-            <label for="rec">収録</label>
+            <label for="recorded">収録</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="rec" v-model="rec"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="recorded" v-model="recorded"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="edit">編集</label>
+            <label for="edited">編集</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="edit" v-model="edit"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="edited" v-model="edited"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="censorship">検閲</label>
+            <label for="reviewed">検閲</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="censorship" v-model="censorship"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reviewed" v-model="reviewed"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="thumbnail">サムネイル画像</label>
+            <label for="drew_thumbnail">サムネイル画像</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="thumbnail" v-model="thumbnail"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="drew_thumbnail" v-model="drew_thumbnail"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="reserve">予約投稿</label>
+            <label for="reserved">予約投稿</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reserve" v-model="reserve"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reserved" v-model="reserved"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="release">公開</label>
+            <label for="released">公開</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="release" v-model="release"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="released" v-model="released"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="comic">4コマ漫画</label>
+            <label for="drew_comic">4コマ漫画</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="comic" v-model="comic"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="drew_comic" v-model="drew_comic"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
+
           <div class="col s2">
-            <label for="tweet">ツイート</label>
+            <label for="tweeted">ツイート</label>
           </div>
           <div class="col s10">
-            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="tweet" v-model="tweet"><span class="lever"></span><i class="fas fa-check"></i></label></div>
+            <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="tweeted" v-model="tweeted"><span class="lever"></span><i class="fas fa-check"></i></label></div>
           </div>
         </div>
 <!--         <div class="row upload-row">
@@ -103,16 +113,20 @@
   module.exports = {
     data: function() {
       return {
-        title: '',
-        published_at: '',
-        rec: false,
-        edit: false,
-        censorship: false,
-        thumbnail: false,
-        reserve: false,
-        release: false,
-        comic: false,
-        tweet: false,
+        title         : '',
+        published_at  : '',
+        recorded      : 0,
+        edited        : 0,
+        reviewed      : 0,
+        drew_thumbnail: 0,
+        reserved      : 0,
+        released      : 0,
+        drew_comic    : 0,
+        tweeted       : 0,
+        folder_id     : '',
+        record_url    : '',
+        thumbnail_url : '',
+        comic_url     : '',
       }
     },
     methods: {
@@ -166,31 +180,32 @@
       //   file_reader.readAsDataURL(file);
       // },
       send: function() {
-        this.axios({
-          method: 'post',
-          url: 'https://script.google.com/macros/s/AKfycbzub6RPKKORwtpMpqccA7Q5mzhNQ_HnFzBjYl74pORaaM3u-39X/exec',
-          data: {
-            title        : this.title,
-            published_at : this.published_at,
-            rec          : this.rec,
-            edit         : this.edit,
-            censorship   : this.censorship,
-            thumbnail    : this.thumbnail,
-            reserve      : this.reserve,
-            release      : this.release,
-            comic        : this.comic,
-            tweet        : this.tweet,
-            // rec_source   : rec_source,
-            // thumbnail_img: thumbnail_img,
-            // comic_img    : comic_img,
-          },
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8',
-          }
-        })
-      }
+        let params = new URLSearchParams();
+
+        params.append('title', this.title);
+        params.append('published_at', this.published_at);
+        params.append('recorded', this.recorded);
+        params.append('edited', this.edited);
+        params.append('reviewed', this.reviewed);
+        params.append('drew_thumbnail', this.drew_thumbnail);
+        params.append('reserved', this.reserved);
+        params.append('released', this.released);
+        params.append('drew_comic', this.drew_comic);
+        params.append('tweeted', this.tweeted);
+        params.append('folder_id', this.folder_id);
+        params.append('record_url', this.record_url);
+        params.append('thumbnail_url', this.thumbnail_url);
+        params.append('comic_url', this.comic_url);
+
+        this.axios.post('http://0.0.0.0:3000/api/v1/publishing_task/', params)
+        .then(response => {
+          location.reload();
+        }).catch(error => {
+          console.log(error);
+        });
     },
   }
+}
 </script>
 
 <style scoped>
