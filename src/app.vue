@@ -8,22 +8,22 @@
       <top-buttons></top-buttons>
       <div class="row">
         <tasks
-        v-for="json in axiosJsons"
-        :id = "json.id"
-        :title = "json.title"
-        :published_at = "json.published_at"
-        :recorded = "json.recorded"
-        :edited = "json.edited"
-        :reviewed = "json.reviewed"
-        :drew_thumbnail = "json.drew_thumbnail"
-        :reserved = "json.reserved"
-        :released = "json.released"
-        :drew_comic = "json.drew_comic"
-        :tweeted = "json.tweeted"
-        :folder_id = "json.folder_id"
-        :record_url = "json.record_url"
-        :thumbnail_url = "json.thumbnail_url"
-        :comic_url = "json.comic_url"
+        v-for="task in publishing_tasks"
+        :id = "task.id"
+        :title = "task.title"
+        :published_at = "task.published_at"
+        :recorded = "task.recorded"
+        :edited = "task.edited"
+        :reviewed = "task.reviewed"
+        :drew_thumbnail = "task.drew_thumbnail"
+        :reserved = "task.reserved"
+        :released = "task.released"
+        :drew_comic = "task.drew_comic"
+        :tweeted = "task.tweeted"
+        :folder_id = "task.folder_id"
+        :record_url = "task.record_url"
+        :thumbnail_url = "task.thumbnail_url"
+        :comic_url = "task.comic_url"
         ></tasks>
       </div>
     </div>
@@ -35,7 +35,7 @@
     name: 'app',
     data: function () {
       return {
-        axiosJsons: {}
+        publishing_tasks: {}
       }
     },
     methods: {
@@ -43,7 +43,7 @@
         var that = this
         this.axios.get('http://0.0.0.0:3000/api/v1/publishing_task/')
         .then(function (response) {
-          that.axiosJsons = response.data
+          that.publishing_tasks = response.data
         })
         .catch(function (error) {
           console.log(error);
@@ -57,16 +57,8 @@
 </script>
 
 <style>
-/*#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  }*/
-
   html, body {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 18px;
