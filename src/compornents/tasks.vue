@@ -19,7 +19,7 @@
       </div>
       <div class="card-action center">
         <a class="waves-effect waves-light btn-small icon" :href="'http://www.kure-rad.io/app/radios/' + id" target="_brank"><i class="material-icons">open_in_new</i></a>
-        <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#modal1"><i class="material-icons">edit</i></button>
+        <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#edit-modal" @click="editTask"><i class="material-icons">edit</i></button>
         <!-- <button class="waves-effect waves-light btn-small icon delete modal-trigger" href="#modal2"><i class="material-icons">delete</i></button> -->
         <button class="waves-effect waves-light btn-small icon delete" @click="deleteTask(title, id)"><i class="material-icons">delete</i></button>
       </div>
@@ -32,7 +32,7 @@
     props: {
       id: {
         type: Number,
-        default: 00,
+        default: 0,
         required: true,
       },
       title:{
@@ -41,7 +41,7 @@
       },
       published_at:{
         type: [Number, String],
-        default: 20010429,
+        default: '2001-04-29',
       },
       recorded:{
         type: Number,
@@ -85,19 +85,19 @@
       },
       folder_id:{
         type: String,
-        default: 0,
+        default: '',
       },
       record_url:{
         type: String,
-        default: 0,
+        default: '',
       },
       thumbnail_url:{
         type: String,
-        default: 0,
+        default: '',
       },
       comic_url:{
         type: String,
-        default: 0,
+        default: '',
       },
     },
     methods: {
@@ -111,6 +111,23 @@
             console.log(error);
           });
         }
+      },
+      editTask: function() {
+        document.getElementById('thisId').value           = this.id;
+        document.getElementById('title').value            = this.title;
+        document.getElementById('published_at').value     = this.published_at;
+        document.getElementById('recorded').checked       = this.recorded;
+        document.getElementById('edited').checked         = this.edited;
+        document.getElementById('reviewed').checked       = this.reviewed;
+        document.getElementById('drew_thumbnail').checked = this.drew_thumbnail;
+        document.getElementById('reserved').checked       = this.reserved;
+        document.getElementById('released').checked       = this.released;
+        document.getElementById('drew_comic').checked     = this.drew_comic;
+        document.getElementById('tweeted').checked        = this.tweeted;
+        document.getElementById('folder_id').value        = this.folder_id;
+        // document.getElementById('record_url').value       = this.record_url;
+        // document.getElementById('thumbnail_url').value    = this.thumbnail_url;
+        // document.getElementById('comic_url').value        = this.comic_url;
       }
     }
   }

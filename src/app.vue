@@ -2,9 +2,10 @@
   <div id="app">
     <h4>ちょっくれ スケジューラー</h4>
     <div class="container">
-      <top-buttons></top-buttons>
-      <modal-form></modal-form>
+      <new-modal></new-modal>
+      <edit-modal></edit-modal>
       <delete-confirm></delete-confirm>
+      <top-buttons></top-buttons>
       <div class="row">
         <tasks
         v-for="json in axiosJsons"
