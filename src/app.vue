@@ -24,6 +24,7 @@
         :record_url = "task.record_url"
         :thumbnail_url = "task.thumbnail_url"
         :comic_url = "task.comic_url"
+        :key="task.id"
         ></tasks>
       </div>
     </div>
