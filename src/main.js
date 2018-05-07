@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Vuex from 'vuex'
 
 Vue.use(VueAxios, axios)
+Vue.use(Vuex)
 
 
 // -------------
@@ -29,5 +31,6 @@ Vue.component('new-modal', EditForm)
 // Vue App
 const app = new Vue({
   el: '#app',
+  store: store,
   render: h => h(App)
 })
