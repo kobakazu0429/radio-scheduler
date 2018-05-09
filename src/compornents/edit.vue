@@ -1,6 +1,5 @@
 <template>
   <div id="edit-modal" class="modal modal-fixed-footer">
-    <input type="hidden" id="thisId">
     <modal-form></modal-form>
     <div class="modal-footer">
       <div class="row">
@@ -18,24 +17,6 @@
   // var thumbnail_img = '';
   // var comic_img = '';
   module.exports = {
-    data: function() {
-      return {
-        title         : '',
-        published_at  : '',
-        recorded      : 0,
-        edited        : 0,
-        reviewed      : 0,
-        drew_thumbnail: 0,
-        reserved      : 0,
-        released      : 0,
-        drew_comic    : 0,
-        tweeted       : 0,
-        folder_id     : '',
-        // record_url    : '',
-        // thumbnail_url : '',
-        // comic_url     : '',
-      }
-    },
     methods: {
       // convert: function(target_id) {
       //   var input_file = document.getElementById(target_id);
@@ -87,21 +68,30 @@
       //   file_reader.readAsDataURL(file);
       // },
       send: function() {
-        let thisId = document.getElementById('thisId').value;
+        let thisId              = this.$store.state.now_form_id;
 
-        let tmp_recorded       = (this.$children["0"].recorded == 0       || this.$children["0"].recorded == false)       ? 0 : 1;
-        let tmp_edited         = (this.$children["0"].edited == 0         || this.$children["0"].edited == false)         ? 0 : 1;
-        let tmp_reviewed       = (this.$children["0"].reviewed == 0       || this.$children["0"].reviewed == false)       ? 0 : 1;
-        let tmp_drew_thumbnail = (this.$children["0"].drew_thumbnail == 0 || this.$children["0"].drew_thumbnail == false) ? 0 : 1;
-        let tmp_reserved       = (this.$children["0"].reserved == 0       || this.$children["0"].reserved == false)       ? 0 : 1;
-        let tmp_released       = (this.$children["0"].released == 0       || this.$children["0"].released == false)       ? 0 : 1;
-        let tmp_drew_comic     = (this.$children["0"].drew_comic == 0     || this.$children["0"].drew_comic == false)     ? 0 : 1;
-        let tmp_tweeted        = (this.$children["0"].tweeted == 0        || this.$children["0"].tweeted == false)        ? 0 : 1;
+        let nowRecorded         = this.$store.state.now_form_recorded;
+        let nowEdited           = this.$store.state.now_form_edited;
+        let nowReviewed         = this.$store.state.now_form_reviewed;
+        let nowDrew_thumbnail   = this.$store.state.now_form_drew_thumbnail;
+        let nowReserved         = this.$store.state.now_form_reserved;
+        let nowReleased         = this.$store.state.now_form_released;
+        let nowDrew_comic       = this.$store.state.now_form_drew_comic;
+        let nowTweeted          = this.$store.state.now_form_tweeted;
+
+        let tmp_recorded       = (nowRecorded == 0       || nowRecorded == false)       ? 0 : 1;
+        let tmp_edited         = (nowEdited == 0         || nowEdited == false)         ? 0 : 1;
+        let tmp_reviewed       = (nowReviewed == 0       || nowReviewed == false)       ? 0 : 1;
+        let tmp_drew_thumbnail = (nowDrew_thumbnail == 0 || nowDrew_thumbnail == false) ? 0 : 1;
+        let tmp_reserved       = (nowReserved == 0       || nowReserved == false)       ? 0 : 1;
+        let tmp_released       = (nowReleased == 0       || nowReleased == false)       ? 0 : 1;
+        let tmp_drew_comic     = (nowDrew_comic == 0     || nowDrew_comic == false)     ? 0 : 1;
+        let tmp_tweeted        = (nowTweeted == 0        || nowTweeted == false)        ? 0 : 1;
 
         let params = new URLSearchParams();
 
-        params.append('title', this.$children["0"].title);
-        params.append('published_at', this.$children["0"].published_at);
+        params.append('title', this.$store.state.now_form_title);
+        params.append('published_at', this.$store.state.now_form_published_at);
         params.append('recorded', tmp_recorded);
         params.append('edited', tmp_edited);
         params.append('reviewed', tmp_reviewed);
@@ -110,7 +100,7 @@
         params.append('released', tmp_released);
         params.append('drew_comic', tmp_drew_comic);
         params.append('tweeted', tmp_tweeted);
-        params.append('folder_id', this.$children["0"].folder_id);
+        params.append('folder_id', this.$store.state.now_form_folder_id);
         params.append('record_url', '');
         params.append('thumbnail_url', '');
         params.append('comic_url', '');

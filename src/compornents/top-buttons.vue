@@ -20,20 +20,7 @@
   module.exports = {
     methods: {
       resetForm: function() {
-        document.getElementById('title').value            = '';
-        document.getElementById('published_at').value     = 0;
-        document.getElementById('recorded').checked       = false;
-        document.getElementById('edited').checked         = false;
-        document.getElementById('reviewed').checked       = false;
-        document.getElementById('drew_thumbnail').checked = false;
-        document.getElementById('reserved').checked       = false;
-        document.getElementById('released').checked       = false;
-        document.getElementById('drew_comic').checked     = false;
-        document.getElementById('tweeted').checked        = false;
-        document.getElementById('folder_id').value        = '';
-        // document.getElementById('record_url').value       = '';
-        // document.getElementById('thumbnail_url').value    = '';
-        // document.getElementById('comic_url').value        = '';
+        this.$store.commit('clearNowForm')
       }
     }
   }
