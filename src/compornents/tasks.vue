@@ -9,6 +9,9 @@
           </div>
           <div class="card-content">
             <h5 class="card-title">{{ task.title }}</h5>
+            <h5 class="card-title" v-if="task.published_at==''">未定</h5>
+            <h5 class="card-title" v-else>{{ $moment(task.published_at).format('YYYY-MM-DD') }}</h5>
+            <hr>
             <p>収録　　　　:　<i class="fas" :class="[task.recorded ? 'fa-check': 'fa-times']"></i></p>
             <p>編集　　　　:　<i class="fas" :class="[task.edited ? 'fa-check': 'fa-times']"></i></p>
             <p>検閲　　　　:　<i class="fas" :class="[task.reviewed ? 'fa-check': 'fa-times']"></i></p>
@@ -78,10 +81,16 @@
   color: black !important;
   background-color: rgba(255, 255, 255, 0.8);
   margin-top: 10px;
+  line-height: 20px!important;
+  font-size: 20px!important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-content {
   padding-top: 0;
+  width: 100%;
 }
 
 .switch {
