@@ -1,18 +1,23 @@
-# introduce
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+# Environment
+## npm version
+```bash
+% npm -v
+5.8.0
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# Usage
+## Setup
+```bash
+git clone git@github.com:kobakazu0429/radio-scheduler.git
+cd radio-scheduler
+npm install
+npm run dev
+```
+
+## Description
+
+
+## Check
+```bash
+% open http://localhost:8080
+```
