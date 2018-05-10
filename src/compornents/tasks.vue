@@ -8,7 +8,7 @@
             <!-- <img :src="item.img"> -->
           </div>
           <div class="card-content">
-            <span class="card-title">{{ task.title }}</span>
+            <h5 class="card-title">{{ task.title }}</h5>
             <p>収録　　　　:　<i class="fas" :class="[task.recorded ? 'fa-check': 'fa-times']"></i></p>
             <p>編集　　　　:　<i class="fas" :class="[task.edited ? 'fa-check': 'fa-times']"></i></p>
             <p>検閲　　　　:　<i class="fas" :class="[task.reviewed ? 'fa-check': 'fa-times']"></i></p>
@@ -77,6 +77,11 @@
 .card-title {
   color: black !important;
   background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+}
+
+.card-content {
+  padding-top: 0;
 }
 
 .switch {
