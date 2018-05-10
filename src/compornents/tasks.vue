@@ -54,19 +54,7 @@
         let selectedTask = this.$store.getters.getTasks.filter(function(item){
           if(item.id == id) return item
         });
-
-        this.$store.commit('updateNowForm', {key: 'now_form_id', value: selectedTask["0"].id})
-        this.$store.commit('updateNowForm', {key: 'now_form_title', value: selectedTask["0"].title})
-        this.$store.commit('updateNowForm', {key: 'now_form_published_at', value: selectedTask["0"].published_at}),
-        this.$store.commit('updateNowForm', {key: 'now_form_recorded', value: selectedTask["0"].recorded})
-        this.$store.commit('updateNowForm', {key: 'now_form_edited', value: selectedTask["0"].edited})
-        this.$store.commit('updateNowForm', {key: 'now_form_reviewed', value: selectedTask["0"].reviewed})
-        this.$store.commit('updateNowForm', {key: 'now_form_drew_thumbnail', value: selectedTask["0"].drew_thumbnail})
-        this.$store.commit('updateNowForm', {key: 'now_form_reserved', value: selectedTask["0"].reserved})
-        this.$store.commit('updateNowForm', {key: 'now_form_released', value: selectedTask["0"].released})
-        this.$store.commit('updateNowForm', {key: 'now_form_drew_comic', value: selectedTask["0"].drew_comic})
-        this.$store.commit('updateNowForm', {key: 'now_form_tweeted', value: selectedTask["0"].tweeted})
-        this.$store.commit('updateNowForm', {key: 'now_form_folder_id', value: selectedTask["0"].folder_id})
+        this.$store.commit('setNowForm', selectedTask["0"])
       }
     }
   }

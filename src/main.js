@@ -86,6 +86,23 @@ let store = new Vuex.Store({
       state.now_form_record_url = '';
       state.now_form_thumbnail_url = '';
       state.now_form_comic_url = '';
+    },
+    setNowForm (state, value) {
+      state.now_form_id = value.id;
+      state.now_form_title = value.title;
+      state.now_form_published_at = value.published_at;
+      state.now_form_recorded = value.recorded;
+      state.now_form_edited = value.edited;
+      state.now_form_reviewed = value.reviewed;
+      state.now_form_drew_thumbnail = value.drew_thumbnail;
+      state.now_form_reserved = value.reserved;
+      state.now_form_released = value.released;
+      state.now_form_drew_comic = value.drew_comic;
+      state.now_form_tweeted = value.tweeted;
+      state.now_form_folder_id = value.folder_id;
+      state.now_form_record_url = value.record_url;
+      state.now_form_thumbnail_url = value.thumbnail_url;
+      state.now_form_comic_url = value.comic_url;
     }
   },
 })
