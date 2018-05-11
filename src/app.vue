@@ -2,8 +2,8 @@
   <div id="app">
     <h4>ちょっくれ スケジューラー</h4>
     <div class="container">
-      <new-modal></new-modal>
-      <edit-modal></edit-modal>
+      <new-task></new-task>
+      <edit-task></edit-task>
       <delete-confirm></delete-confirm>
       <top-buttons></top-buttons>
       <tasks></tasks>

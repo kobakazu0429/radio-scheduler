@@ -25,8 +25,8 @@ Vue.component('tasks', Tasks)
 Vue.component('modal-form', Form)
 Vue.component('top-buttons', TopButtons)
 Vue.component('delete-confirm', DeleteConfirm)
-Vue.component('edit-modal', NewForm)
-Vue.component('new-modal', EditForm)
+Vue.component('edit-task', NewForm)
+Vue.component('new-task', EditForm)
 
 
 // -------------
