@@ -42,7 +42,7 @@
       deleteTask: function(id, title) {
         let confirmresult = confirm('[ 第' + id + '回 ] ' + title + ' を本当に削除してもいいですか？');
         if(confirmresult) {
-          this.axios.delete('http://0.0.0.0:3000/api/v1/publishing_task/' + id + '/')
+          this.axios.delete('http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/' + id + '/')
           .then(response => {
             location.reload();
           }).catch(error => {

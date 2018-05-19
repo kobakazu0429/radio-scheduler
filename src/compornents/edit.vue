@@ -105,7 +105,7 @@
         params.append('thumbnail_url', '');
         params.append('comic_url', '');
 
-        this.axios.patch('http://0.0.0.0:3000/api/v1/publishing_task/' + thisId + '/', params)
+        this.axios.patch('http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/' + thisId + '/', params)
         .then(response => {
           location.reload();
         }).catch(error => {

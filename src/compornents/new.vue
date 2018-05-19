@@ -103,7 +103,7 @@
         params.append('thumbnail_url', '');
         params.append('comic_url', '');
 
-        this.axios.post('http://0.0.0.0:3000/api/v1/publishing_task/', params)
+        this.axios.post('http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/', params)
         .then(response => {
           location.reload();
         }).catch(error => {
