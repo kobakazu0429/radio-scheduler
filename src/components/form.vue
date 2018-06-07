@@ -14,59 +14,59 @@
           <input type="date" id="published_at" :value="$moment(this.$store.state.now_form_published_at).format('YYYY-MM-DD')" @input="updateNowForm('now_form_published_at', $event.target.value)">
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="recorded">収録</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="recorded" :checked="this.$store.state.now_form_recorded" @change="updateNowForm('now_form_recorded', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="edited">編集</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="edited" :checked="this.$store.state.now_form_edited" @change="updateNowForm('now_form_edited', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="reviewed">検閲</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reviewed" :checked="this.$store.state.now_form_reviewed" @change="updateNowForm('now_form_reviewed', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="drew_thumbnail">サムネイル画像</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="drew_thumbnail" :checked="this.$store.state.now_form_drew_thumbnail" @change="updateNowForm('now_form_drew_thumbnail', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="reserved">予約投稿</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="reserved" :checked="this.$store.state.now_form_reserved" @change="updateNowForm('now_form_reserved', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="released">公開</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="released" :checked="this.$store.state.now_form_released" @change="updateNowForm('now_form_released', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="drew_comic">4コマ漫画</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="drew_comic" :checked="this.$store.state.now_form_drew_comic" @change="updateNowForm('now_form_drew_comic', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
 
-        <div class="col s2">
+        <div class="col s12 m6 l6 xl3">
           <label for="tweeted">ツイート</label>
         </div>
-        <div class="col s10">
+        <div class="col s12 m6 l6 xl9">
           <div class="switch"><label><i class="fas fa-times"></i><input type="checkbox" id="tweeted" :checked="this.$store.state.now_form_tweeted" @change="updateNowForm('now_form_tweeted', $event.target.checked)"><span class="lever"></span><i class="fas fa-check"></i></label></div>
         </div>
       </div>
@@ -99,13 +99,13 @@
 </template>
 
 <script>
-  module.exports = {
-    methods: {
-     updateNowForm (key, value) {
-      this.$store.commit('updateNowForm', {key: key, value: value})
-    },
+module.exports = {
+  methods: {
+    updateNowForm(key, value) {
+      this.$store.commit("updateNowForm", { key: key, value: value });
+    }
   }
-}
+};
 </script>
 
 <style scoped>
