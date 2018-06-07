@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div v-for="task in this.$store.getters.getTasks">
-      <div class="col s12 m6 l3">
+      <div class="col s12 m6 l6 xl3">
         <div class="card">
           <div class="card-image">
             <img src="http://materializecss.com/images/sample-1.jpg">
@@ -34,30 +34,34 @@
 </template>
 
 <script>
-  module.exports = {
-    mounted: function() {
-      this.$store.commit('getAPITasks')
-    },
-    methods: {
-      deleteTask: function(id, title) {
-        let confirmresult = confirm('[ 第' + id + '回 ] ' + title + ' を本当に削除してもいいですか？');
-        if(confirmresult) {
-          this.axios.delete('http://0.0.0.0:3000/api/v1/publishing_task/' + id + '/')
+module.exports = {
+  mounted: function() {
+    this.$store.commit("getAPITasks");
+  },
+  methods: {
+    deleteTask: function(id, title) {
+      let confirmresult = confirm(
+        "[ 第" + id + "回 ] " + title + " を本当に削除してもいいですか？"
+      );
+      if (confirmresult) {
+        this.axios
+          .delete("http://0.0.0.0:3000/api/v1/publishing_task/" + id + "/")
           .then(response => {
             location.reload();
-          }).catch(error => {
+          })
+          .catch(error => {
             console.log(error);
           });
-        }
-      },
-      editTask: function(id) {
-        let selectedTask = this.$store.getters.getTasks.filter(function(item){
-          if(item.id == id) return item
-        });
-        this.$store.commit('setNowForm', selectedTask["0"])
       }
+    },
+    editTask: function(id) {
+      let selectedTask = this.$store.getters.getTasks.filter(function(item) {
+        if (item.id == id) return item;
+      });
+      this.$store.commit("setNowForm", selectedTask["0"]);
     }
   }
+};
 </script>
 
 <style scoped>
@@ -69,8 +73,8 @@
   color: black !important;
   background-color: rgba(255, 255, 255, 0.8);
   margin-top: 10px;
-  line-height: 20px!important;
-  font-size: 20px!important;
+  line-height: 20px !important;
+  font-size: 20px !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -90,22 +94,22 @@
 }
 
 .fa-check {
-  color: #34E29BFF;
+  color: #34e29bff;
 }
 
 .fa-times {
-  color: #FF0034FF;
+  color: #ff0034ff;
 }
 
 .add {
-  background-color: #FFBABFFF;
+  background-color: #ffbabfff;
 }
 
 .edit {
-  background-color: #00B5FFFF;
+  background-color: #00b5ffff;
 }
 
 .delete {
-  background-color: #FF0013FF;
+  background-color: #ff0013ff;
 }
 </style>
