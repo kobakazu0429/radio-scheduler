@@ -14,12 +14,12 @@ Vue.use(require('vue-moment'))
 // -------------
 // Component
 import App from './app.vue'
-import Tasks from './compornents/tasks.vue'
-import Form from './compornents/form.vue'
-import TopButtons from './compornents/top-buttons.vue'
-import DeleteConfirm from './compornents/delete-confirm.vue'
-import NewForm from './compornents/new.vue'
-import EditForm from './compornents/edit.vue'
+import Tasks from './components/tasks.vue'
+import Form from './components/form.vue'
+import TopButtons from './components/top-buttons.vue'
+import DeleteConfirm from './components/delete-confirm.vue'
+import NewForm from './components/new.vue'
+import EditForm from './components/edit.vue'
 
 Vue.component('tasks', Tasks)
 Vue.component('modal-form', Form)
@@ -60,17 +60,17 @@ let store = new Vuex.Store({
   mutations: {
     getAPITasks(state) {
       axios.get('http://0.0.0.0:3000/api/v1/publishing_task/')
-      .then(function (response) {
-        state.publishing_tasks = response.data
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+        .then(function (response) {
+          state.publishing_tasks = response.data
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     },
-    updateNowForm (state, obj) {
+    updateNowForm(state, obj) {
       state[obj.key] = obj.value
     },
-    clearNowForm (state) {
+    clearNowForm(state) {
       state.now_form_id = '';
       state.now_form_title = '';
       state.now_form_published_at = '';
@@ -87,7 +87,7 @@ let store = new Vuex.Store({
       state.now_form_thumbnail_url = '';
       state.now_form_comic_url = '';
     },
-    setNowForm (state, value) {
+    setNowForm(state, value) {
       state.now_form_id = value.id;
       state.now_form_title = value.title;
       state.now_form_published_at = value.published_at;
