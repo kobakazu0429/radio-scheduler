@@ -59,7 +59,7 @@ let store = new Vuex.Store({
 
   mutations: {
     getAPITasks(state) {
-      axios.get('http://0.0.0.0:3000/api/v1/publishing_task/')
+      axios.get('http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/')
         .then(function (response) {
           state.publishing_tasks = response.data
         })

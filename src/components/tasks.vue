@@ -45,7 +45,11 @@ module.exports = {
       );
       if (confirmresult) {
         this.axios
-          .delete("http://0.0.0.0:3000/api/v1/publishing_task/" + id + "/")
+          .delete(
+            "http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/" +
+              id +
+              "/"
+          )
           .then(response => {
             location.reload();
           })
