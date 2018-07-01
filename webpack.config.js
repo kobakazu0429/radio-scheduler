@@ -1,10 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+
+const environment = process.env.NODE_ENV || 'development'
 
 module.exports = {
-  mode: 'development',
+  mode: environment,
 
   entry: './src/main.js',
 
@@ -51,7 +53,8 @@ module.exports = {
   resolve: {
     alias: {
       vue: 'vue/dist/vue.esm.js',
-      vuex: 'vuex/dist/vuex.js'
+      vuex: 'vuex/dist/vuex.js',
+      config: path.join(__dirname, `./config/${environment}.js`)
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -70,11 +73,11 @@ module.exports = {
   },
 
   devtool: '#inline-source-map'
-};
+}
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
-  module.exports.optimization = { minimize: true };
+  module.exports.devtool = '#source-map'
+  module.exports.optimization = { minimize: true }
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -84,5 +87,5 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ]);
+  ])
 }

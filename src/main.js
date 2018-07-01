@@ -1,4 +1,8 @@
 // -------------
+// Config
+import config from 'config'
+
+// -------------
 // Library
 import Vue from 'vue'
 import axios from 'axios'
@@ -31,6 +35,7 @@ Vue.component('new-task', EditForm)
 // Store
 let store = new Vuex.Store({
   state: {
+    API_URL: config.candidateUrl,
     all_tasks: {},
     now_form_id: '',
     now_form_time: '',
@@ -52,15 +57,19 @@ let store = new Vuex.Store({
   },
 
   getters: {
-    getTasks(state) {
+    APIURL(state) {
+      return state.API_URL
+    },
+
+    Tasks(state) {
       return state.all_tasks
     }
   },
 
   mutations: {
-    getAPITasks(state) {
+    APITasks(state) {
       axios
-        .get('http://localhost:3000/api/v2/tasks/')
+        .get(store.getters.APIURL)
         .then(function(response) {
           state.all_tasks = response.data
         })

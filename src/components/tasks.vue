@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div v-for="task in this.$store.getters.getTasks" :key="task.time">
+    <div v-for="task in this.$store.getters.Tasks" :key="task.time">
       <div class="col s12 m4 l4 xl4">
         <div class="card">
           <div class="card-image">
@@ -36,7 +36,7 @@
 <script>
 module.exports = {
   mounted: function() {
-    this.$store.commit('getAPITasks')
+    this.$store.commit('APITasks')
   },
 
   methods: {
@@ -46,7 +46,7 @@ module.exports = {
       )
       if (confirmresult) {
         this.axios
-          .delete('http://localhost:3000/api/v2/tasks/' + id + '/')
+          .delete(this.$store.getters.APIURL + id + '/')
           .then(response => {
             location.reload()
           })
@@ -56,7 +56,7 @@ module.exports = {
       }
     },
     editTask: function(id, time) {
-      let selectedTask = this.$store.getters.getTasks.filter(function(item) {
+      let selectedTask = this.$store.getters.Tasks.filter(function(item) {
         if (item.id == id) return item
       })
       this.$store.commit('setNowForm', selectedTask['0'])

@@ -107,7 +107,7 @@ module.exports = {
       params.append('comic_url', '')
 
       this.axios
-        .post('http://localhost:3000/api/v2/tasks/', params)
+        .post(this.$store.getters.APIURL, params)
         .then(response => {
           location.reload()
         })
