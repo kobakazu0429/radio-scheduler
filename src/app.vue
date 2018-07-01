@@ -12,13 +12,22 @@
 </template>
 
 <script>
-  export default {
-    name: 'app',
+export default {
+  name: 'app',
+  mounted: function() {
+    const elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems);
   }
+};
 </script>
 
 <style>
-html, body {
+@import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://use.fontawesome.com/releases/v5.0.2/css/all.css');
+
+html,
+body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -27,21 +36,5 @@ html, body {
 
 .container {
   margin-top: 5rem;
-}
-
-#a01 {
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-#a02 {
-  background-color: rgba(0, 255, 0, 0.2);
-}
-
-#a03 {
-  background-color: rgba(0, 0, 255, 0.2);
-}
-
-#a04 {
-  background-color: rgba(0, 0, 0, 0.2);
 }
 </style>
