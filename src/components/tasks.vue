@@ -1,16 +1,16 @@
 <template>
   <div class="row">
-    <div v-for="task in this.$store.getters.getTasks">
-      <div class="col s12 m6 l6 xl3">
+    <div v-for="task in this.$store.getters.getTasks" :key="task.time">
+      <div class="col s12 m4 l4 xl4">
         <div class="card">
           <div class="card-image">
             <img src="http://materializecss.com/images/sample-1.jpg">
             <!-- <img :src="item.img"> -->
           </div>
           <div class="card-content">
-            <h5 class="card-title">{{ task.title }}</h5>
-            <h5 class="card-title" v-if="task.published_at==''">未定</h5>
-            <h5 class="card-title" v-else>{{ $moment(task.published_at).format('YYYY-MM-DD') }}</h5>
+            <span class="subject">タイトル　　-　</span><span class="body">{{ task.title }}</span><br>
+            <span class="subject">公開予定日　-　</span><span class="body" v-if="task.published_at==''">未定</span><span class="body" v-else>{{ $moment(task.published_at).format('YYYY-MM-DD') }}</span><br>
+            <span class="subject">担当者　　　-　</span><span class="body">{{task.manager}}</span><br>
             <hr>
             <p>収録　　　　:　<i class="fas" :class="[task.recorded ? 'fa-check': 'fa-times']"></i></p>
             <p>編集　　　　:　<i class="fas" :class="[task.edited ? 'fa-check': 'fa-times']"></i></p>
@@ -22,10 +22,10 @@
             <p>ツイート　　:　<i class="fas" :class="[task.tweeted ? 'fa-check': 'fa-times']"></i></p>
           </div>
           <div class="card-action center">
-            <a class="waves-effect waves-light btn-small icon" :href="'http://www.kure-rad.io/app/radios/' + task.id" target="_brank"><i class="material-icons">open_in_new</i></a>
-            <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#edit-modal" @click="editTask(task.id)"><i class="material-icons">edit</i></button>
+            <a class="waves-effect waves-light btn-small icon" :href="'https://www.kure-rad.io/app/radios/' + task.time" target="_brank"><i class="material-icons">open_in_new</i></a>
+            <button class="waves-effect waves-light btn-small icon edit modal-trigger" href="#edit-modal" @click="editTask(task.id, task.time)"><i class="material-icons">edit</i></button>
             <!-- <button class="waves-effect waves-light btn-small icon delete modal-trigger" href="#modal2"><i class="material-icons">delete</i></button> -->
-            <button class="waves-effect waves-light btn-small icon delete" @click="deleteTask(task.id, task.title)"><i class="material-icons">delete</i></button>
+            <button class="waves-effect waves-light btn-small icon delete" @click="deleteTask(task.id, task.time, task.title)"><i class="material-icons">delete</i></button>
           </div>
         </div>
       </div>
@@ -36,36 +36,33 @@
 <script>
 module.exports = {
   mounted: function() {
-    this.$store.commit("getAPITasks");
+    this.$store.commit('getAPITasks')
   },
+
   methods: {
-    deleteTask: function(id, title) {
+    deleteTask: function(id, time, title) {
       let confirmresult = confirm(
-        "[ 第" + id + "回 ] " + title + " を本当に削除してもいいですか？"
-      );
+        '[ 第' + time + '回 ] ' + title + ' を本当に削除してもいいですか？'
+      )
       if (confirmresult) {
         this.axios
-          .delete(
-            "http://www.scheduler.kure-rad.io:3000/api/v1/publishing_task/" +
-              id +
-              "/"
-          )
+          .delete('http://localhost:3000/api/v2/tasks/' + id + '/')
           .then(response => {
-            location.reload();
+            location.reload()
           })
           .catch(error => {
-            console.log(error);
-          });
+            console.log(error)
+          })
       }
     },
-    editTask: function(id) {
+    editTask: function(id, time) {
       let selectedTask = this.$store.getters.getTasks.filter(function(item) {
-        if (item.id == id) return item;
-      });
-      this.$store.commit("setNowForm", selectedTask["0"]);
+        if (item.id == id) return item
+      })
+      this.$store.commit('setNowForm', selectedTask['0'])
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -74,11 +71,10 @@ module.exports = {
 }
 
 .card-title {
-  color: black !important;
-  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
   margin-top: 10px;
-  line-height: 20px !important;
-  font-size: 20px !important;
+  line-height: 20px;
+  font-size: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -115,5 +111,13 @@ module.exports = {
 
 .delete {
   background-color: #ff0013ff;
+}
+
+.subject {
+  font-size: 0.7rem;
+}
+
+.body {
+  font-size: 1rem;
 }
 </style>
